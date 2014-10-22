@@ -1,7 +1,7 @@
 <?php
 class SessLib
 {
-	var $V97ee5bfa = "sess";
+	var $sessionKeyName = "sess";
 	var $Vf82b6359 = "https://web2.cc.ntu.edu.tw/p/s/login2/p6.php";
 	var $redirectUri;
 	var $V26e63326;
@@ -55,12 +55,12 @@ class SessLib
 	function F43007317()
 	{
 		session_start();
-		return ($_SESSION[$this->V97ee5bfa]!=null)&&(strlen($_SESSION[$this->V97ee5bfa])==64);
+		return ($_SESSION[$this->sessionKeyName]!=null)&&(strlen($_SESSION[$this->sessionKeyName])==64);
 	}
 	function F7a31eab3()
 	{
 		session_start();
-		$_SESSION[$this->V97ee5bfa] = $_GET[$this->V97ee5bfa];
+		$_SESSION[$this->sessionKeyName] = $_GET[$this->sessionKeyName];
 	}
 
 	function F174a5915()
@@ -92,13 +92,13 @@ class SessLib
 	}
 	function F89474043()
 	{
-		if($_GET[$this->V97ee5bfa]==null||strlen(Trim($_GET[$this->V97ee5bfa]))!=64)
+		if($_GET[$this->sessionKeyName]==null||strlen(Trim($_GET[$this->sessionKeyName]))!=64)
 		return false;
 		require_once 'SOAP/Client.php';
 		$V62608e08 = new SOAP_Client('https://qsl.cc.ntu.edu.tw/s/v1.3/session.php');
 		$V62608e08-> setOpt('curl',CURLOPT_SSL_VERIFYPEER,'0');
 		$V62608e08-> setOpt('curl',CURLOPT_TIMEOUT,'300');
-		$V21ffce5b = array('SessionID' => $_GET[$this->V97ee5bfa] );
+		$V21ffce5b = array('SessionID' => $_GET[$this->sessionKeyName] );
 		$Vd1fc8eaf = $V62608e08->call('checkSession',$V21ffce5b,'http://tempuri.org/');
 
 		session_start();
