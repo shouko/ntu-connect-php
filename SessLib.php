@@ -98,12 +98,12 @@ class SessLib
 		$client = new SOAP_Client('https://qsl.cc.ntu.edu.tw/s/v1.3/session.php');
 		$client-> setOpt('curl',CURLOPT_SSL_VERIFYPEER,'0');
 		$client-> setOpt('curl',CURLOPT_TIMEOUT,'300');
-		$V21ffce5b = array('SessionID' => $_GET[$this->sessionKeyName] );
-		$Vd1fc8eaf = $client->call('checkSession',$V21ffce5b,'http://tempuri.org/');
+		$parameters = array('SessionID' => $_GET[$this->sessionKeyName] );
+		$response = $client->call('checkSession',$parameters,'http://tempuri.org/');
 
 		session_start();
-		while (list($V3c6e0b8a, $V3a6d0284) = each($Vd1fc8eaf)) {
-			$_SESSION[$V3c6e0b8a]=UrlDecode($V3a6d0284);
+		while (list($key, $value) = each($response)) {
+			$_SESSION[$key]=UrlDecode($value);
 		}
 		return true;
 	}
