@@ -2,7 +2,7 @@
 class SessLib
 {
 	var $sessionKeyName = "sess";
-	var $Vf82b6359 = "https://web2.cc.ntu.edu.tw/p/s/login2/p6.php";
+	var $authEndpoint = "https://web2.cc.ntu.edu.tw/p/s/login2/p6.php";
 	var $redirectUri;
 	var $V26e63326;
 	var $locale;
@@ -87,7 +87,7 @@ class SessLib
 		$argv="";
 		if ($this->locale== "en_US")
 		$argv = "argv12=01";
-		header('Location:'.$this->Vf82b6359."?url=".$this->redirectUri."&".$argv);
+		header('Location:'.$this->authEndpoint."?url=".$this->redirectUri."&".$argv);
 
 	}
 	function F89474043()
