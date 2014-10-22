@@ -95,11 +95,11 @@ class SessLib
 		if($_GET[$this->sessionKeyName]==null||strlen(Trim($_GET[$this->sessionKeyName]))!=64)
 		return false;
 		require_once 'SOAP/Client.php';
-		$V62608e08 = new SOAP_Client('https://qsl.cc.ntu.edu.tw/s/v1.3/session.php');
-		$V62608e08-> setOpt('curl',CURLOPT_SSL_VERIFYPEER,'0');
-		$V62608e08-> setOpt('curl',CURLOPT_TIMEOUT,'300');
+		$client = new SOAP_Client('https://qsl.cc.ntu.edu.tw/s/v1.3/session.php');
+		$client-> setOpt('curl',CURLOPT_SSL_VERIFYPEER,'0');
+		$client-> setOpt('curl',CURLOPT_TIMEOUT,'300');
 		$V21ffce5b = array('SessionID' => $_GET[$this->sessionKeyName] );
-		$Vd1fc8eaf = $V62608e08->call('checkSession',$V21ffce5b,'http://tempuri.org/');
+		$Vd1fc8eaf = $client->call('checkSession',$V21ffce5b,'http://tempuri.org/');
 
 		session_start();
 		while (list($V3c6e0b8a, $V3a6d0284) = each($Vd1fc8eaf)) {
