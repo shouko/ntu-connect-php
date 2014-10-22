@@ -23,16 +23,16 @@ class SessLib
 		: ($_SERVER["HTTPS"] == "on")
 		? "s"
 		: "";
-		$V81788ba0 = $this->Fdfee0119(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$V03c7c0ac;
+		$protocol = $this->getStringBefore(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$V03c7c0ac;
 		$V901555fb = ($_SERVER["SERVER_PORT"] == "80")
 		? ""
 		: (":".$_SERVER["SERVER_PORT"]);
-		return $V81788ba0."://".$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"];
+		return $protocol."://".$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"];
 
 	}
-	function Fdfee0119($V8ddf8780, $Vfac98944)
+	function getStringBefore($haystack, $needle)
 	{
-		return substr($V8ddf8780, 0, strpos($V8ddf8780, $Vfac98944));
+		return substr($haystack, 0, strpos($haystack, $needle));
 	}
 	function F362509d2()
 	{
