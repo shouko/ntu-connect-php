@@ -14,7 +14,7 @@ class SessLib
 		$this->locale= $locale;
 
 		$this->redirectUri= $this->getredirectUri();
-		$this->F362509d2();
+		$this->mainProcedure();
 	}
 	function getredirectUri()
 	{
@@ -34,7 +34,7 @@ class SessLib
 	{
 		return substr($haystack, 0, strpos($haystack, $needle));
 	}
-	function F362509d2()
+	function mainProcedure()
 	{
 		if($this->hasSessionID())
 		if($_SERVER["QUERY_STRING"]!=null){
