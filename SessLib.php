@@ -3,7 +3,7 @@ class SessLib
 {
 	var $V97ee5bfa = "sess";
 	var $Vf82b6359 = "https://web2.cc.ntu.edu.tw/p/s/login2/p6.php";
-	var $V9ad542a5;
+	var $redirectUri;
 	var $V26e63326;
 	var $locale;
 	function SessLib($V26e63326 = true,$locale ="zh_TW")
@@ -13,10 +13,10 @@ class SessLib
 		if(is_string($locale))
 		$this->locale= $locale;
 
-		$this->V9ad542a5= $this->F9ad542a5();
+		$this->redirectUri= $this->getRedirectUri();
 		$this->F362509d2();
 	}
-	function F9ad542a5()
+	function getRedirectUri()
 	{
 		$V03c7c0ac = empty($_SERVER["HTTPS"])
 		? ""
@@ -38,7 +38,7 @@ class SessLib
 	{
 		if($this->F43007317())
 		if($_SERVER["QUERY_STRING"]!=null){
-			header('Location:'.$this->V9ad542a5);
+			header('Location:'.$this->redirectUri);
 			exit;
 		}
 		else return;
@@ -47,7 +47,7 @@ class SessLib
 			$this->F7a31eab3();
 			if($this->V26e63326)
 			$this->F174a5915();
-			header('Location:'.$this->V9ad542a5);
+			header('Location:'.$this->redirectUri);
 			exit;
 		}
 		$this->Fc59d4660();
@@ -75,7 +75,7 @@ class SessLib
 			echo("您的 sessionid 不應該在此 IP 使用。<BR>");
 			echo("五秒鐘後自動轉向登入網站。<BR>");
 			echo("<script language=\"javascript\">");
-			echo("setTimeout(\"location.href='".$this->V9ad542a5."'\",5000)");
+			echo("setTimeout(\"location.href='".$this->redirectUri."'\",5000)");
 			echo("</script>");
 			exit;
 		}
@@ -87,7 +87,7 @@ class SessLib
 		$V61dd86c2="";
 		if ($this->locale== "en_US")
 		$V61dd86c2 = "argv12=01";
-		header('Location:'.$this->Vf82b6359."?url=".$this->V9ad542a5."&".$V61dd86c2);
+		header('Location:'.$this->Vf82b6359."?url=".$this->redirectUri."&".$V61dd86c2);
 
 	}
 	function F89474043()
