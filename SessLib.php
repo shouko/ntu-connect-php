@@ -46,7 +46,7 @@ class SessLib
 		{
 			$this->F7a31eab3();
 			if($this->V26e63326)
-			$this->F174a5915();
+			$this->validateSourceIP();
 			header('Location:'.$this->RedirectUri);
 			exit;
 		}
@@ -63,7 +63,7 @@ class SessLib
 		$_SESSION[$this->SessionKeyName] = $_GET[$this->SessionKeyName];
 	}
 
-	function F174a5915()
+	function validateSourceIP()
 	{
 		$OriginalIP = $_SERVER['HTTP_X_FORWARDED_FOR']!=null
 		? $_SERVER['HTTP_X_FORWARDED_FOR']
