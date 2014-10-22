@@ -24,7 +24,7 @@ class SessLib
 		? "s"
 		: "";
 		$protocol = $this->getStringBefore(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$V03c7c0ac;
-		$PortIfNotStandard = ($_SERVER["SERVER_PORT"] == "80")
+		$portIfNotStandard = ($_SERVER["SERVER_PORT"] == "80")
 		? ""
 		: (":".$_SERVER["SERVER_PORT"]);
 		return $protocol."://".$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"];
