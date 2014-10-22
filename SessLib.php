@@ -50,7 +50,7 @@ class SessLib
 			header('Location:'.$this->redirectUri);
 			exit;
 		}
-		$this->Fc59d4660();
+		$this->redirectToNtuLoginPage();
 	}
 	function F43007317()
 	{
@@ -81,13 +81,13 @@ class SessLib
 		}
 	}
 
-	function Fc59d4660()
+	function redirectToNtuLoginPage()
 	{
 
-		$V61dd86c2="";
+		$argv="";
 		if ($this->locale== "en_US")
-		$V61dd86c2 = "argv12=01";
-		header('Location:'.$this->Vf82b6359."?url=".$this->redirectUri."&".$V61dd86c2);
+		$argv = "argv12=01";
+		header('Location:'.$this->Vf82b6359."?url=".$this->redirectUri."&".$argv);
 
 	}
 	function F89474043()
