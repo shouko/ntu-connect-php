@@ -13,10 +13,10 @@ class SessLib
 		if(is_string($locale))
 		$this->locale= $locale;
 
-		$this->redirectUri= $this->getredirectUri();
+		$this->redirectUri= $this->getRedirectUri();
 		$this->mainProcedure();
 	}
-	function getredirectUri()
+	function getRedirectUri()
 	{
 		$s = empty($_SERVER["HTTPS"])
 		? ""
