@@ -18,12 +18,12 @@ class SessLib
 	}
 	function getredirectUri()
 	{
-		$V03c7c0ac = empty($_SERVER["HTTPS"])
+		$s = empty($_SERVER["HTTPS"])
 		? ""
 		: ($_SERVER["HTTPS"] == "on")
 		? "s"
 		: "";
-		$protocol = $this->getStringBefore(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$V03c7c0ac;
+		$protocol = $this->getStringBefore(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
 		$portIfNotStandard = ($_SERVER["SERVER_PORT"] == "80")
 		? ""
 		: (":".$_SERVER["SERVER_PORT"]);
